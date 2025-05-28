@@ -5,7 +5,7 @@ import Footer from '../Shared/Footer';
 
 const RootLayout = () => {
     return (
-        <div className='xl:container mx-auto'>
+        <div className="md:container mx-auto">
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>

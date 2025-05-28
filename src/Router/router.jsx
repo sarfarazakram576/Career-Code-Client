@@ -1,16 +1,47 @@
 import { createBrowserRouter } from "react-router";
 import RootLayout from "../Layouts/RootLayout";
+import Register from "../Pages/Register/Register";
+import SignIn from "../Pages/SignIn/SignIn";
 import Home from "../Pages/Home/Home";
+import JobDetails from "../Pages/JobDetails/JobDetails";
+import PrivateRouter from "./PrivateRouter";
+import JobApply from "../Pages/JobApply/JobApply";
 
 export const router = createBrowserRouter([
-    {
-        path: '/',
-        Component: RootLayout,
-        children: [
-            {
-                index: true,
-                Component: Home
-            }
-        ]
-    }
-])
+  {
+    path: "/",
+    Component: RootLayout,
+    children: [
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path: "/signIn",
+        Component: SignIn,
+      },
+      {
+        path: "/jobs/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/jobs/${params.id}`),
+        element: (
+          <PrivateRouter>
+            <JobDetails></JobDetails>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/jobApply/:id",
+        element: (
+          <PrivateRouter>
+            <JobApply></JobApply>
+          </PrivateRouter>
+        ),
+      },
+    ],
+  },
+]);
