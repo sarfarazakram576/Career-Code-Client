@@ -16,6 +16,23 @@ const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
+
+{user &&
+      <li>
+        <NavLink to="/myApplications">My Applications</NavLink>
+      </li>
+}
+
+{user &&
+<>
+      <li>
+        <NavLink to="/addJob">Add Job</NavLink>
+      </li>
+      <li>
+        <NavLink to="/myPostedJobs">My Posted Jobs</NavLink>
+      </li>
+</>
+}
     </>
   );
   return (
@@ -60,16 +77,16 @@ const Navbar = () => {
           <>
             {" "}
             <Link
-              to="/register"
-              className="btn btn-accent font-bold shadow-none mr-2"
-            >
-              Register
-            </Link>
-            <Link
               to="/signIn"
               className="btn btn-accent font-bold shadow-none mr-2"
             >
               Sign In
+            </Link>
+            <Link
+              to="/register"
+              className="btn btn-accent font-bold shadow-none mr-2"
+            >
+              Register
             </Link>
           </>
         )}

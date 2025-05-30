@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import Banner from "./Banner";
-import HotJobs from "./HotJobs";
+const HotJobs = lazy(()=>import('./HotJobs'))
 
 const Home = () => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/jobs")
+    fetch("https://career-code-server-phi.vercel.app/jobs")
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, []);
@@ -13,7 +13,9 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      {jobs.length !== 0 && <HotJobs jobs={jobs}></HotJobs>}
+     <Suspense fallback={<span className="text-2xl">Loading...</span>}>
+      <HotJobs jobs={jobs}></HotJobs>
+     </Suspense>
     </div>
   );
 };

@@ -40,8 +40,8 @@ const JobCard = ({ job }) => {
         <p className="my-4 text-xs">{description}</p>
 
         <div>
-          {requirements.map((skill) => (
-            <div className="badge badge-info h-auto w-auto p-1 text-[10px] font-semibold m-1 rounded-full">
+          {requirements.map((skill, i) => (
+            <div key={i} className="badge badge-info h-auto w-auto p-1 text-[10px] font-semibold m-1 rounded-full">
               {skill}
             </div>
           ))}
@@ -53,33 +53,3 @@ const JobCard = ({ job }) => {
 };
 
 export default JobCard;
-// {
-// "_id": "6836c8467952b159d420de25",
-// "title": "Software Engineer",
-// "location": "Halishohor, Chittagong",
-// "jobType": "Hybrid",
-// "category": "Engineering",
-// "applicationDeadline": "2024-12-31",
-// "salaryRange": {
-// "min": 40000,
-// "max": 60000,
-// "currency": "bdt"
-// },
-// "description": "We are seeking a skilled Software Engineer to join our dynamic team. The candidate will work on diverse projects and contribute to innovative solutions.",
-// "company": "Favorite IT",
-// "requirements": [
-// "JavaScript",
-// "React",
-// "Node.js",
-// "MongoDB"
-// ],
-// "responsibilities": [
-// "Develop and maintain software",
-// "Collaborate with the team",
-// "Participate in code reviews"
-// ],
-// "status": "active",
-// "hr_email": "hr@techsolutions.com",
-// "hr_name": "Farhan Rahman",
-// "company_logo": "https://i.ibb.co/mXD5MNf/facebook.png"
-// },

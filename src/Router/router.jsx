@@ -6,6 +6,10 @@ import Home from "../Pages/Home/Home";
 import JobDetails from "../Pages/JobDetails/JobDetails";
 import PrivateRouter from "./PrivateRouter";
 import JobApply from "../Pages/JobApply/JobApply";
+import MyApplication from "../Pages/MyApplications/MyApplication";
+import AddJob from "../Pages/AddJob/AddJob";
+import MyPostedJobs from "../Pages/MyPostedJobs/MyPostedJobs";
+import ViewApplications from "../Pages/ViewApplications/ViewApplications";
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +31,7 @@ export const router = createBrowserRouter([
       {
         path: "/jobs/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/jobs/${params.id}`),
+          fetch(`https://career-code-server-phi.vercel.app/jobs/${params.id}`),
         element: (
           <PrivateRouter>
             <JobDetails></JobDetails>
@@ -39,6 +43,39 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <JobApply></JobApply>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/myApplications",
+        element: (
+          <PrivateRouter>
+            <MyApplication></MyApplication>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/addJob",
+        element: (
+          <PrivateRouter>
+            <AddJob></AddJob>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/myPostedJobs",
+        element: (
+          <PrivateRouter>
+            <MyPostedJobs></MyPostedJobs>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/applications/:job_id",
+        loader: ({ params }) => fetch(`https://career-code-server-phi.vercel.app/applications/job/${params.job_id}`),
+        element: (
+          <PrivateRouter>
+            <ViewApplications></ViewApplications>
           </PrivateRouter>
         ),
       },
