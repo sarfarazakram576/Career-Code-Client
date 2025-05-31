@@ -4,17 +4,17 @@ import ApplicationList from "./ApplicationList";
 import useAuth from "../../Hooks/useAuth";
 import { myApplicationPromise } from "../../api/applicationsApi";
 
-
-
 const MyApplication = () => {
   const { user } = useAuth();
+
   return (
     <div className="max-w-5xl mx-auto my-12">
       <ApplicationStats></ApplicationStats>
       <Suspense fallback={<span className="text-2xl">Loading...</span>}>
         <ApplicationList
           myApplicationPromise={myApplicationPromise(
-            user?.email || user?.providerData[0]?.email
+            user?.email || user?.providerData[0]?.email,
+            user.accessToken
           )}
         ></ApplicationList>
       </Suspense>
