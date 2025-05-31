@@ -9,6 +9,7 @@ import {
   signInWithPopup
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.init";
+import axios from "axios";
 
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
@@ -40,6 +41,13 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setLoading(false);
       setUser(currentUser);
+      if(currentUser?.email || currentUser?.providerData[0]?.email){
+        const userData = {email: currentUser.email || currentUser.providerData[0].email}
+        axios.post('https://career-code-server-phi.vercel.app/jwt', userData, {
+          withCredentials: true
+        })
+         .catch(error => console.log(error))
+      }
     });
     return () => {
       unsubscribe();
