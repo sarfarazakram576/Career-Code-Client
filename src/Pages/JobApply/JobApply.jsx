@@ -24,7 +24,7 @@ const JobApply = () => {
     };
 
     axios
-      .post("https://career-code-server-phi.vercel.app/applications", application)
+      .post("http://localhost:3000/applications", application)
       .then((data) => {
         if(data.data.insertedId){
             toast.success("You successfully apply for this job")
