@@ -7,7 +7,7 @@ const ViewApplications = () => {
   const applications = useLoaderData();
 
   const handleStatusChange = (e, app_id) => {
-    axios.patch(`http://localhost:3000/applications/${app_id}`,{status: e.target.value})
+    axios.patch(`https://career-code-server-phi.vercel.app/applications/${app_id}`,{status: e.target.value})
     .then(res=>{
         if(res.data.modifiedCount){
             toast.success('You Successfully set the status.')

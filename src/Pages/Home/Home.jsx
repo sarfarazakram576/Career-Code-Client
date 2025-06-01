@@ -5,7 +5,7 @@ const HotJobs = lazy(()=>import('./HotJobs'))
 const Home = () => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/jobs")
+    fetch("https://career-code-server-phi.vercel.app/jobs")
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, []);

@@ -23,7 +23,7 @@ const AddJob = () => {
     newJob.status = "active";
 
     axios
-      .post("http://localhost:3000/jobs", newJob)
+      .post("https://career-code-server-phi.vercel.app/jobs", newJob)
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("You successfully post this job.");
